@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taller IA para Pequeños Creadores — Abono ONG</title>
+  <meta name="description" content="Taller de inteligencia artificial para niños y niñas de Uruguay. Diseñá tu propio juego con propósito junto a Portal Bosque."/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* HERO */
+    .taller-hero {
+      background: var(--light);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 0 3rem;
+    }
+
+    .taller-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .taller-hero-content { padding: 0; }
+    .taller-hero-content .tag { color: var(--orange); }
+
+    .taller-hero-content h1 {
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .taller-hero-subtitle {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--mid);
+      margin-bottom: 1.5rem;
+    }
+
+    .taller-hero-desc {
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .taller-hero-illustration {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .taller-hero-illustration img {
+      width: 100%;
+      max-width: 460px;
+      height: auto;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .taller-hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .taller-hero-illustration { order: -1; }
+      .taller-hero-illustration img { max-width: 300px; margin: 0 auto; }
+    }
+
+    /* EDITION BANNER */
+    .edition-banner {
+      background: var(--orange-pale);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 0;
+    }
+
+    .edition-inner {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .edition-date {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--orange-dark);
+      font-weight: 400;
+    }
+
+    .edition-schools {
+      color: var(--mid);
+      font-size: 0.925rem;
+    }
+
+    .edition-schools a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .edition-schools a:hover { text-decoration: underline; }
+
+    /* PHOTO */
+    .photo-section { padding: 0 0 4rem; }
+
+    .photo-single {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      max-height: 520px;
+    }
+
+    .photo-single img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    /* SOBRE EL TALLER */
+    .taller-sobre { background: white; padding: 5rem 0; }
+
+    .taller-sobre-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .taller-sobre-header h2 { margin-bottom: 0; }
+
+    .taller-info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .taller-info-block h3 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--charcoal);
+    }
+
+    .taller-info-block p {
+      color: var(--mid);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .taller-info-block ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .taller-info-block ul li {
+      font-size: 0.9rem;
+      color: var(--mid);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .taller-info-block ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-size: 0.8rem;
+    }
+
+    /* WHY IA */
+    .why-ia {
+      background: var(--light);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 0;
+    }
+
+    .why-ia-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .why-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      border: 1px solid var(--border);
+    }
+
+    .why-card h3 { margin-bottom: 0.75rem; font-size: 1.05rem; }
+    .why-card p { color: var(--mid); font-size: 0.9rem; line-height: 1.7; }
+
+    /* ALIANZA */
+    .alianza {
+      padding: 5rem 0;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .alianza-text h2 { margin-bottom: 1.25rem; }
+
+    .alianza-text p {
+      color: var(--mid);
+      margin-bottom: 1rem;
+      line-height: 1.75;
+    }
+
+    .alianza-text a { color: var(--orange); text-decoration: none; font-weight: 500; }
+    .alianza-text a:hover { text-decoration: underline; }
+
+    .alianza-contact {
+      background: var(--orange-pale);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      border: 1px solid rgba(232,149,26,0.2);
+    }
+
+    .alianza-contact h3 { margin-bottom: 0.75rem; }
+
+    .alianza-contact p {
+      font-size: 0.9rem;
+      color: var(--mid);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .alianza-contact a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .taller-info-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .why-ia-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      .alianza { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .taller-info-grid { grid-template-columns: 1fr; }
+      .why-ia-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+
+  <!-- HERO -->
+  <section class="taller-hero">
+    <div class="container">
+      <div class="taller-hero-inner">
+        <div class="taller-hero-content">
+          <span class="tag">Programa educativo</span>
+          <h1>Taller IA para Pequeños Creadores</h1>
+          <p class="taller-hero-subtitle">Diseñá tu Propio Juego con Propósito</p>
+          <p class="taller-hero-desc">Desde Abono, junto a nuestros amigos de <a href="#" style="color:var(--orange); font-weight:500;">Portal Bosque</a>, cocreamos un programa especial para acercar a niños y niñas del Uruguay al fascinante mundo de la inteligencia artificial.</p>
+          <p class="taller-hero-desc" style="margin-top:-1rem;">Una mentoría lúdica, accesible y pensada para despertar la curiosidad y el pensamiento crítico desde edades tempranas.</p>
+          <a href="mailto:abono.ong.uy@gmail.com" class="btn-primary">Contactanos</a>
+        </div>
+        <div class="taller-hero-illustration">
+          <img src="taller-kids.png" alt="Niños y niñas creando con IA en la naturaleza"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITION BANNER -->
+  <section class="edition-banner">
+    <div class="container">
+      <div class="edition-inner">
+        <div class="edition-date">1ra edición: sábado 2 y domingo 3 de agosto de 2025</div>
+        <div class="edition-schools">Participaron estudiantes de <a href="https://www.redwoodschool.edu.uy/" target="_blank">Redwood School</a>, Escuela N°2 de Tacuarembó, y <a href="#" target="_blank">New School</a> de Maldonado.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO -->
+  <section class="photo-section">
+    <div class="container">
+      <div class="photo-single">
+        <img src="taller-photo.webp" alt="Taller IA — mentores y estudiantes en Portal Bosque"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE EL TALLER -->
+  <section class="taller-sobre">
+    <div class="container">
+      <div class="taller-sobre-header">
+        <span class="tag">Sobre el taller</span>
+        <h2>Un programa pensado para niños y niñas creadores</h2>
+      </div>
+      <div class="taller-info-grid">
+        <div class="taller-info-block">
+          <h3>Marco teórico</h3>
+          <p>Este programa se inspira en marcos internacionales clave como el <a href="https://www.oecd.org/education/ai-literacy/" target="_blank" style="color:var(--orange)">AI Literacy Framework (AILit), desarrollado por la OECD y la Unión Europea</a>, y la <a href="https://www.unesco.org/en/artificial-intelligence/education" target="_blank" style="color:var(--orange)">Guía de la UNESCO sobre Inteligencia Artificial y Educación</a>. Ambos promueven el desarrollo de competencias esenciales para que niños, niñas y adolescentes interactúen con la IA de manera crítica, creativa, ética y colaborativa. Se realizará en entornos cuidados y acompañados por adultos.</p>
+        </div>
+        <div class="taller-info-block">
+          <h3>¿Qué es este taller?</h3>
+          <p>Es una experiencia educativa pensada para niños y niñas de entre 10 y 12 años, que busca introducirlos de forma lúdica y accesible al mundo de la inteligencia artificial. El taller propone combinar tecnología, juego, creatividad y contacto con la naturaleza.</p>
+          <p style="margin-top: 0.75rem;">Durante un fin de semana, niños de distintas escuelas comparten una experiencia de aprendizaje en las instalaciones de <strong>Portal Bosque</strong> (Maldonado), acompañados por mentores, educadores y coordinadores que guían actividades interactivas e inclusivas.</p>
+        </div>
+        <div class="taller-info-block">
+          <h3>Objetivos del taller</h3>
+          <ul>
+            <li>Introducir la IA de forma accesible, divertida y reflexiva.</li>
+            <li>Estimular la creatividad, el trabajo en equipo y la resolución de problemas.</li>
+            <li>Desarrollar criterio para decidir cuándo y cómo usar la IA.</li>
+            <li>Fomentar una mirada ética, inclusiva y humana de la tecnología.</li>
+            <li>Potenciar el pensamiento crítico y creatividad desde una edad temprana.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IA -->
+  <section class="why-ia">
+    <div class="container">
+      <span class="tag">¿Por qué enseñar IA a niños?</span>
+      <h2 style="margin-bottom: 2.5rem;">Creadores y protagonistas, no espectadores</h2>
+      <div class="why-ia-grid">
+        <div class="why-card">
+          <h3>¿Qué actividades se realizaron?</h3>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.5rem; margin-top:0.5rem;">
+            <li style="font-size:0.875rem; color:var(--mid);">→ Juegos interactivos con herramientas de IA</li>
+            <li style="font-size:0.875rem; color:var(--mid);">→ Dinámicas de creación de historias, dibujos y juegos</li>
+            <li style="font-size:0.875rem; color:var(--mid);">→ Actividades al aire libre y en la naturaleza</li>
+            <li style="font-size:0.875rem; color:var(--mid);">→ Reflexiones sobre el uso responsable de la tecnología</li>
+            <li style="font-size:0.875rem; color:var(--mid);">→ Una "feria de juegos" donde los niños presentaron sus creaciones</li>
+          </ul>
+        </div>
+        <div class="why-card">
+          <h3>Por qué y para qué</h3>
+          <p>Queremos que los niños experimenten con herramientas poderosas como la IA de forma lúdica y consciente, integrando la tecnología con el juego, el cuerpo, la naturaleza y la creatividad.</p>
+          <p style="margin-top: 0.75rem;">Inspirados por el enfoque "aprender haciendo", promovemos experiencias auténticas donde los niños puedan desplegar su imaginación y resolver problemas reales.</p>
+        </div>
+        <div class="why-card">
+          <h3>Una alianza con impacto</h3>
+          <p>Este proyecto nace de la colaboración entre <strong>Fundación Abono</strong> y <a href="#" style="color:var(--orange)">Portal Bosque</a>. Una fusión de compromiso con la educación, el arte, la tecnología y la naturaleza.</p>
+          <p style="margin-top: 0.75rem;">Para más información podés escribir a: <a href="mailto:abono.ong.uy@gmail.com" style="color:var(--orange)">abono.ong.uy@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="components.js"></script>
+  <script>
+    document.getElementById('nav-placeholder').innerHTML = NAV_HTML('taller');
+    document.getElementById('footer-placeholder').innerHTML = FOOTER_HTML;
+  </script>
+</body>
+</html>

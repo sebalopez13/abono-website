@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abono ONG — Generando impacto desde el interior</title>
+  <meta name="description" content="Fundación Abono: promovemos la inclusión social a través de la educación, la innovación y la formación en Uruguay."/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    /* dark overlay so text is legible */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(10,8,4,0.78) 0%,
+        rgba(10,8,4,0.62) 45%,
+        rgba(10,8,4,0.25) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      padding: 6rem 2rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--orange-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      color: white;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--orange-light);
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid rgba(255,255,255,0.6);
+      color: white;
+      padding: 13px 27px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: white;
+    }
+
+    /* ── PROGRAMS STRIP ── */
+    .programs-strip {
+      background: var(--light);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .program-item {
+      padding: 1.5rem 2rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .program-item:last-child { border-right: none; }
+
+    .program-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 0.875rem;
+    }
+
+    .program-item h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .program-item p  { font-size: 0.825rem; color: var(--mid); line-height: 1.6; }
+
+    /* ── FEATURED TALLER ── */
+    .featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .featured-image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .featured-image img { max-width: 100%; height: auto; display: block; }
+
+    .featured-text .tag { display: block; margin-bottom: 1rem; }
+    .featured-text h2   { margin-bottom: 1.25rem; }
+    .featured-text p    { color: var(--mid); margin-bottom: 1.25rem; line-height: 1.75; }
+    .featured-text p:last-of-type { margin-bottom: 2rem; }
+
+    /* ── MISSION BANNER ── */
+    .mission-banner {
+      background: var(--orange);
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    .mission-banner h2 {
+      color: white;
+      font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+      max-width: 740px;
+      margin: 0 auto 1.25rem;
+      line-height: 1.25;
+    }
+
+    .mission-banner p {
+      color: rgba(255,255,255,0.88);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      color: var(--orange-dark);
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+
+    /* ── PROGRAMS CARDS ── */
+    .programs-deep-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .program-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .program-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 4px 20px rgba(232,149,26,0.1);
+    }
+
+    .program-card-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--orange-pale);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .program-card-icon svg { width: 22px; height: 22px; stroke: var(--orange); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .program-card h3 { margin-bottom: 0.6rem; font-size: 1.05rem; }
+    .program-card p  { color: var(--mid); font-size: 0.875rem; line-height: 1.7; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { min-height: 70vh; }
+      .hero-content { padding: 5rem 1.5rem 4rem; }
+      .programs-grid { grid-template-columns: 1fr 1fr; }
+      .program-item { border-bottom: 1px solid var(--border); }
+      .program-item:nth-child(2) { border-right: none; }
+      .program-item:nth-child(3),
+      .program-item:nth-child(4) { border-bottom: none; }
+      .featured { grid-template-columns: 1fr; gap: 2.5rem; }
+      .programs-deep-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 540px) {
+      .programs-grid { grid-template-columns: 1fr; }
+      .program-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .program-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="img/hero-home.png" alt="Jóvenes uruguayos en la plaza trabajando juntos"/>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Fundación Abono · Uruguay</p>
+        <h1>Generando <em>impacto</em><br>desde el interior.</h1>
+        <p class="hero-desc">Promovemos el pensamiento crítico, la innovación y la inclusión para fortalecer capacidades, generar oportunidades y avanzar hacia una sociedad más justa e igualitaria.</p>
+        <div class="hero-ctas">
+          <a href="about.html" class="btn-primary">Conocenos</a>
+          <a href="https://www.paypal.com/donate/?hosted_button_id=HG58KEAJ6E5TA" target="_blank" class="btn-outline-white">Donar ahora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS STRIP -->
+  <section class="programs-strip">
+    <div class="container">
+      <div class="programs-grid">
+        <div class="program-item">
+          <svg class="program-icon" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="20" fill="#FDF3E3"/>
+            <path d="M12 26 C12 20 16 16 20 16 C24 16 28 20 28 26" stroke="#E8951A" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <circle cx="20" cy="13" r="3" stroke="#E8951A" stroke-width="1.5" fill="none"/>
+          </svg>
+          <h3>Mentoría redAbono</h3>
+          <p>Referentes que acompañan a jóvenes y comunidades en proyectos con impacto real.</p>
+        </div>
+        <div class="program-item">
+          <svg class="program-icon" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="20" fill="#FDF3E3"/>
+            <path d="M13 27 L13 20 L20 14 L27 20 L27 27 Z" stroke="#E8951A" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+            <path d="M17 27 L17 22 L23 22 L23 27" stroke="#E8951A" stroke-width="1.5" fill="none"/>
+          </svg>
+          <h3>Talleres Educativos</h3>
+          <p>Tecnología, arte y naturaleza para despertar imaginación y pensamiento crítico.</p>
+        </div>
+        <div class="program-item">
+          <svg class="program-icon" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="20" fill="#FDF3E3"/>
+            <path d="M20 12 L20 20 M16 16 L20 12 L24 16" stroke="#E8951A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="20" cy="24" r="4" stroke="#E8951A" stroke-width="1.5" fill="none"/>
+          </svg>
+          <h3>Difusión de Ideas</h3>
+          <p>Campañas y contenidos que inspiran, promueven igualdad y movilizan comunidades.</p>
+        </div>
+        <div class="program-item">
+          <svg class="program-icon" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="20" fill="#FDF3E3"/>
+            <path d="M14 26 C14 22 17 19 20 19 C23 19 26 22 26 26" stroke="#E8951A" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M20 19 L20 14" stroke="#E8951A" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M17 16 L20 13 L23 16" stroke="#E8951A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Plataforma de Oportunidades</h3>
+          <p>Conectamos talentos y proyectos con recursos para el desarrollo comunitario.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TALLER FEATURED -->
+  <section class="section">
+    <div class="container">
+      <div class="featured">
+        <div class="featured-image">
+          <img src="taller-kids.png" alt="Taller IA para Pequeños Creadores"/>
+        </div>
+        <div class="featured-text">
+          <span class="tag">Programa destacado</span>
+          <h2>Taller IA para Pequeños Creadores</h2>
+          <p>Diseñá tu Propio Juego con Propósito. Junto a <a href="https://portalbosque.com" target="_blank" style="color:var(--orange)">Portal Bosque</a>, cocreamos un programa especial para acercar a niños y niñas del Uruguay al mundo de la inteligencia artificial.</p>
+          <p>Una mentoría lúdica, accesible y pensada para despertar la curiosidad y el pensamiento crítico desde edades tempranas.</p>
+          <a href="taller-ia.html" class="btn-primary">Más información</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION BANNER -->
+  <section class="mission-banner">
+    <div class="container">
+      <h2>Tu donación es el abono que hace crecer proyectos con impacto social, educativo y humano.</h2>
+      <p>Cada contribución ayuda a financiar talleres, mentorías y programas que transforman vidas en Uruguay.</p>
+      <a href="https://www.paypal.com/donate/?hosted_button_id=HG58KEAJ6E5TA" target="_blank" class="btn-white">Donar con PayPal</a>
+    </div>
+  </section>
+
+  <!-- PROGRAMS DETAIL -->
+  <section class="section">
+    <div class="container">
+      <span class="tag">Lo que hacemos</span>
+      <h2>Impactando vidas hoy</h2>
+      <div class="programs-deep-grid">
+        <div class="program-card">
+          <div class="program-card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <h3>Mentoría redAbono</h3>
+          <p>Acompañamos con referentes que comparten saberes y experiencias para guiar a jóvenes y comunidades en proyectos con impacto real.</p>
+        </div>
+        <div class="program-card">
+          <div class="program-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Talleres de Educación Creativa</h3>
+          <p>Integran tecnología, arte y naturaleza para despertar imaginación, pensamiento crítico y colaboración en niños y jóvenes.</p>
+        </div>
+        <div class="program-card">
+          <div class="program-card-icon">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Difusión de Ideas Transformadoras</h3>
+          <p>Creamos campañas y contenidos que inspiran, promueven igualdad y movilizan hacia una sociedad inclusiva.</p>
+        </div>
+        <div class="program-card">
+          <div class="program-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Plataforma de Oportunidades</h3>
+          <p>Visibilizamos talentos y conectamos proyectos con recursos para abrir caminos hacia el desarrollo comunitario.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="components.js"></script>
+  <script>
+    document.getElementById('nav-placeholder').innerHTML = NAV_HTML('inicio');
+    document.getElementById('footer-placeholder').innerHTML = FOOTER_HTML;
+  </script>
+</body>
+</html>
